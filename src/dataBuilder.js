@@ -496,7 +496,7 @@ function buildGearData(equipmentList) {
 
   equipmentList.forEach( gear => {
     const statList = gear.equipmentStat.stat;
-    if (statList.length > 0) {
+    if (statList && statList.length > 0) {
       data[ gear.id ] = { stats: {} };
       statList.forEach( stat => {
         data[ gear.id ].stats[ stat.unitStatId ] = +stat.unscaledDecimalValue;
@@ -741,7 +741,7 @@ function buildUnitData(unitsList, skillList, statTables) {
       unitGMTables[ unit.baseId ] = unitGMTables[ unit.baseId ] || {}; // ensure unit's table exists
       unitGMTables[ unit.baseId ][ unit.rarity ] = statTables[ unit.statProgressionId ];
 
-      if (unit.rarity === 1) {
+      if (unit.rarity === 7) {
         baseList.push(unit);
       }
     }
